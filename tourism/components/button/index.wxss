@@ -1,0 +1,12 @@
+/* components/button/index.wxss */
+.confirm-btn {
+  font-size: 13pt;
+  line-height: 85rpx;
+  height: 85rpx;
+  background: #00b7f3;
+  color: #fff;
+  text-align: center;
+  border-radius: 100rpx;
+  margin-top: 50rpx;
+  width: 500rpx
+}

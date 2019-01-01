@@ -1,0 +1,10 @@
+<!--pages/place/place.wxml-->
+<view class="trip">
+  <view class="trip-top" wx:if="{{ trip != null }}">
+    <view class="trip-info">
+      <view class="h1">{{ trip.name }}</view>
+      <text>{{trip.content}}</text>
+    </view>
+  </view>
+</view>
+

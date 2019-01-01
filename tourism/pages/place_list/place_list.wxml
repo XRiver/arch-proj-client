@@ -1,6 +1,7 @@
 <!--pages/place_list/place_list.wxml-->
 <import src="../../templates/trip/trip.wxml"/>
 
+<v-search/>
 <scroll-view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800">
   <block wx:for="{{ trips }}" wx:for-item="trip">
     <template is="m-trip" data="{{trip: trip}}"/>

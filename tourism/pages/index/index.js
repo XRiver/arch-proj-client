@@ -1,12 +1,16 @@
 //login.js
 //获取应用实例
 var app = getApp();
+import { HTTP } from '../../utils/http.js'
+let http = new HTTP()
+
 Page({
   data: {
     remind: '加载中',
     angle: 0,
     userInfo: {},
-    regFlag: true
+    regFlag: false,
+    openid:null
   },
   goToIndex: function() {
     wx.navigateTo({
@@ -14,10 +18,8 @@ Page({
     })
   },
   onLoad: function() {
-    wx.setNavigationBarTitle({
-      title: app.globalData.shopName
-    });
-    this.checkLogin();
+    this.setOpenId()
+    // this.checkLogin()
   },
   onShow: function() {
 
@@ -44,35 +46,48 @@ Page({
     });
   },
 
-  checkLogin: function () {
-    var that = this;
+  // 设置openid
+  setOpenId:function() {
+    var that = this
     wx.login({
       success: function (res) {
         if (!res.code) {
-          app.alert({ 'content': '登录失败，请再次点击~~' });
+          app.alert({
+            'content': '登录失败，请再次点击~~'
+          });
           return;
         }
-        wx.request({
-          url: app.buildUrl('/member/check-reg'),
-          header: app.getRequestHeader(),
-          method: 'POST',
-          data: { code: res.code },
-          success: function (res) {
-            if (res.data.code != 200) {
-              // 更改data里的数据，要用setData方法
-              that.setData({
-                regFlag: false
-              });
-              return;
-            }
-            app.setCache("token", res.data.data.token);
-            // that.goToIndex();
+        var url = that.getUrl(res.code)
+        http.request({
+          url: url,
+          success: (res) => {
+            that.setData({
+              openid:res.openid
+            })
           }
-        });
+        })
       }
     });
   },
 
+  getUrl: function(code) {
+    let url = `https://api.weixin.qq.com/sns/jscode2session?appid=wx45b48d336eb355e4&secret=80969c1bc96945caa3991ca0908055a6&js_code=${code}&grant_type=authorization_code`
+    return url
+  },
+
+  checkLogin: function (event) {
+    http.request({
+      url: "login?openid =" + this.data.openid,
+      success: function (res) {
+        if (res.data.status != 1) {
+          // 更改data里的数据，要用setData方法
+          that.setData({
+            regFlag: false
+          });
+        }
+      }
+    })
+  },
   login: function(e) {
     var that = this;
     // 通过e获取用户信息
@@ -83,35 +98,19 @@ Page({
       return
     }
     // 获取用户信息
-    var data = e.detail.userInfo;
-    // data.nickName='hwj'
-    app.console(data)
-    wx.login({
-      success: function (res) {
-        if (!res.code) {
-          app.alert({ 'content': '登录失败，请再次点击~~' });
-          return;
-        }
-        // 获取用户code
-        data['code'] = res.code;
+    var userInfo = e.detail.userInfo;
+    console.log(userInfo)
+    that.goToRegister();
+  },
 
-        wx.request({
-          url:app.buildUrl('/member/login'),
-          // header设置content-type为表单提交
-          header: app.getRequestHeader(),
-          method: 'POST',
-          data: data,
-          success: function (res) {
-            if (res.data.code != 200) {
-              app.alert({ 'content': res.data.msg });
-              return;
-            }
-            app.setCache("token", res.data.data.token);
-            that.goToIndex();
-          }
-        });
-      }
-    });
 
+  goToRegister:function(){
+    wx.navigateTo({
+      url: '/pages/register/register',
+    })
   }
+
+
+
+
 });

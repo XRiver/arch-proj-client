@@ -16,6 +16,13 @@ Page({
     }]
   },
 
+  viewTrip(e) {
+    const ds = e.currentTarget.dataset;
+    console.log(ds)
+    wx.navigateTo({
+      url: `../place/place?id=${ds.id}&name=${ds.name}`,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

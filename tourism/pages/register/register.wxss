@@ -1,0 +1,5 @@
+/* pages/register/register.wxss */
+.container{
+  display: flex;
+  align-items:center
+}

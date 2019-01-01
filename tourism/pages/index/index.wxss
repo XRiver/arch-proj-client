@@ -14,7 +14,7 @@ page{
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #69C3AA;
+  background: #00b7f3;
   align-items: center;
   padding: 0;
   height: 100%;
@@ -101,7 +101,7 @@ page{
   bottom: 200rpx;
   width: 240rpx;
   height: 240rpx;
-  margin-left: -80rpx;
+  margin-left: -110rpx;
   border-radius: 160rpx;
   animation: sway 10s ease-in-out infinite;
   opacity: .95;
@@ -156,7 +156,7 @@ page{
   font-size: 13pt;
   line-height: 85rpx;
   height: 85rpx;
-  background: #69C3AA;
+  background: #00b7f3;
   color: #fff;
   text-align: center;
   border-radius: 100rpx;
