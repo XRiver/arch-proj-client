@@ -1,5 +1,3 @@
-import {config} from '../config.js'
-
 const tips = {
   1: '抱歉，出现了一个错误',
 }
@@ -12,7 +10,7 @@ class HTTP{
     }
 
     wx.request({
-      url: config.api_base_url+params.url,
+      url:params.url,
       data:params.data,
       method:params.method,
       header: {
