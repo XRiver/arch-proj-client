@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/place_list/place_list",
     "pages/index/index",
+    "pages/place_list/place_list",
     "pages/register/register",
     "pages/place/place"
   ],

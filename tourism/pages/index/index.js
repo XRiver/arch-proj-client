@@ -9,7 +9,7 @@ Page({
     remind: '加载中',
     angle: 0,
     userInfo: {},
-    regFlag: false,
+    regFlag: true,
     openid:null
   },
   goToIndex: function() {
