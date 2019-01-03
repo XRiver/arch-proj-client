@@ -1,8 +1,9 @@
-import {config} from 'config.js'
-import {HTTP} from 'http.js'
+const config = require('../config.js')
+const SyncHTTP = require('http.js').HTTP
 
 const baseUrl = config.api_base_url
-const syncHttp = HTTP()
+const syncHttp = new SyncHTTP()
+const asyncHttp = null
 
 const http = syncHttp
 
@@ -75,12 +76,12 @@ const joinPlan = function(params) {
 }
 
 module.export = {
-    login,
-    register,
-    getAttractions,
-    getAttractionById,
-    createPlan,
-    searchPlanByAttractionName,
-    searchPlanByUserName,
-    joinPlan
+  login:login,
+  register:register,
+  getAttractions:getAttractions,
+  getAttractionById:getAttractionById,
+  createPlan:createPlan,
+  searchPlanByAttractionName:searchPlanByAttractionName,
+  searchPlanByUserName:searchPlanByUserName,
+  joinPlan:joinPlan
 }

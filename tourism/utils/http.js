@@ -2,7 +2,7 @@ const tips = {
   1: '抱歉，出现了一个错误',
 }
 
-class HTTP{
+class HTTP {
   request(params){
     // params中会传递url，data，method,success回调函数
     if (!params.method) {

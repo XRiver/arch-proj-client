@@ -4,6 +4,8 @@ var app = getApp();
 import { HTTP } from '../../utils/http.js'
 let http = new HTTP()
 
+const api = require('../../utils/api.js')
+
 Page({
   data: {
     remind: '加载中',
@@ -76,11 +78,25 @@ Page({
   },
 
   checkLogin: function (event) {
+    const that = this
+    /* 
     http.request({
       url: "login?openid =" + this.data.openid,
       success: function (res) {
         if (res.data.status != 1) {
-          // 更改data里的数据，要用setData方法
+          that.setData({
+            regFlag: false
+          });
+        }
+      }
+    })
+    */
+    API.login({
+      data:{
+        openId: this.data.openid
+      },
+      success: function(res) {
+        if (res.data.status != 1) {
           that.setData({
             regFlag: false
           });
@@ -88,6 +104,7 @@ Page({
       }
     })
   },
+  
   login: function(e) {
     var that = this;
     // 通过e获取用户信息
@@ -103,14 +120,9 @@ Page({
     that.goToRegister();
   },
 
-
   goToRegister:function(){
     wx.navigateTo({
       url: '/pages/register/register',
     })
   }
-
-
-
-
 });
