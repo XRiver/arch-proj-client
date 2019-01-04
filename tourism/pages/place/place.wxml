@@ -2,8 +2,8 @@
 <view class="trip">
   <view class="trip-top" wx:if="{{ trip != null }}">
     <view class="trip-info">
-      <view class="h1">{{ trip.name }}</view>
-      <text>{{trip.content}}</text>
+      <view class="h1">{{ trip.aname }}</view>
+      <text>{{trip.description}}</text>
     </view>
   </view>
 </view>

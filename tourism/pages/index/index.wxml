@@ -14,7 +14,7 @@
       <view class="bd">
          <image class="smalltitle" src="/images/index/slogan.png"></image>
 
-        <view class="confirm-btn" bindtap='goToIndex' wx:if="{{regFlag==true}}">
+        <view class="confirm-btn" bindtap='goToPlaceList' wx:if="{{regFlag==true}}">
           <text>进入首页</text>
         </view>
 

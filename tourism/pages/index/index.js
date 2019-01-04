@@ -14,10 +14,13 @@ Page({
     regFlag: true,
     openid:null
   },
-  goToIndex: function() {
-    wx.navigateTo({
+  goToPlaceList: function() {
+    wx.switchTab({
       url: '/pages/place_list/place_list',
     })
+    // wx.navigateTo({
+    //   url: '/pages/place_list/place_list',
+    // })
   },
   onLoad: function() {
     this.setOpenId()

@@ -1,34 +1,17 @@
-// pages/place/place.js
-const getAttractionById = require('../../utils/api.js').getAttractionById
-
+// pages/my/my.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    trips:[
-    { id: 1, name: "夫子庙", content: "夫子庙是个好地方" }, 
-    { id: 2, name: "中山陵", content: "中山陵是个好地方"}],
-    trip:null
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const that = this;
-    const id = options.id;
-    getAttractionById({
-      data:{
-        aid:id
-      },
-      success:(res)=>{
-        this.setData({
-          trip: res[0]
-        })
-      }
-    })
 
   },
 
@@ -36,10 +19,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // const that = this;
-    // wx.setNavigationBarTitle({
-    //   title: that.data.trip.aname,
-    // });
+
   },
 
   /**

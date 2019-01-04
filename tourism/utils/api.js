@@ -35,7 +35,7 @@ const getAttractions = function(params) {
 
 const getAttractionById = function(params) {
     http.request({
-        url:`${baseUrl}/attractions?type=single&aId=${params.data.aId}`,
+        url:`${baseUrl}/attractions?type=single&aid=${params.data.aid}`,
         method:'GET',
         success:params.success
     })
@@ -75,13 +75,13 @@ const joinPlan = function(params) {
     })
 }
 
-module.export = {
-  login:login,
-  register:register,
-  getAttractions:getAttractions,
-  getAttractionById:getAttractionById,
-  createPlan:createPlan,
-  searchPlanByAttractionName:searchPlanByAttractionName,
-  searchPlanByUserName:searchPlanByUserName,
-  joinPlan:joinPlan
+export {
+  login,
+  register,
+  getAttractions,
+  getAttractionById,
+  createPlan,
+  searchPlanByAttractionName,
+  searchPlanByUserName,
+  joinPlan
 }

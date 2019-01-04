@@ -1,4 +1,8 @@
 // pages/place_list/place_list.js
+
+const getAttractions = require('../../utils/api.js').getAttractions
+
+
 Page({
 
   /**
@@ -27,7 +31,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    getAttractions({
+      success:(res)=>{
+      this.setData({
+        places:res
+      })}
+    })
+    // console.log("hh", getAttractions)
   },
 
   /**
