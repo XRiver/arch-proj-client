@@ -1,19 +1,22 @@
 // pages/register/register.js
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    realname:'',
-    school:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      openid:options.openid
+    })
   },
 
   /**
@@ -63,5 +66,17 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  formSubmit(e) {
+    // console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    this.setData({
+      realInfo: e.detail.value
+    })
+    
+    const regData = app.globalData.userInfo
+    regData['realname'] = this.data.realInfo.realname
+    regData['school'] = this.data.realInfo.school
+    regData['openid'] = this.data.openid
+    console.log(regData)
+  },
 })

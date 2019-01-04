@@ -1,4 +1,4 @@
 <!--components/button/index.wxml-->
-<view class="confirm-btn" >
-  <text>{{content}}</text>
-</view>
+<button form-type="{{formType}}" class="confirm-btn" >
+  {{content}}
+</button >

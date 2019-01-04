@@ -1,5 +1,6 @@
 {
   "pages": [
+  
     "pages/index/index",
     "pages/place_list/place_list",
     "pages/register/register",

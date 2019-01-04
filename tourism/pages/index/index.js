@@ -1,6 +1,5 @@
 //login.js
-//获取应用实例
-var app = getApp();
+const app = getApp();
 import { HTTP } from '../../utils/http.js'
 let http = new HTTP()
 
@@ -11,7 +10,7 @@ Page({
     remind: '加载中',
     angle: 0,
     userInfo: {},
-    regFlag: true,
+    regFlag: false,
     openid:null
   },
   goToPlaceList: function() {
@@ -30,6 +29,7 @@ Page({
 
   },
   onReady: function() {
+    
     var that = this;
     setTimeout(function() {
       that.setData({
@@ -63,6 +63,7 @@ Page({
           return;
         }
         var url = that.getUrl(res.code)
+        console.log(url)
         http.request({
           url: url,
           success: (res) => {
@@ -94,11 +95,12 @@ Page({
       }
     })
     */
-    API.login({
+    api.login({
       data:{
         openId: this.data.openid
       },
       success: function(res) {
+        console.log(res)
         if (res.data.status != 1) {
           that.setData({
             regFlag: false
@@ -119,13 +121,15 @@ Page({
     }
     // 获取用户信息
     var userInfo = e.detail.userInfo;
-    console.log(userInfo)
+    // console.log(e.detail)
+    app.globalData.userInfo = userInfo
     that.goToRegister();
   },
 
   goToRegister:function(){
+    let openid = this.data.openid
     wx.navigateTo({
-      url: '/pages/register/register',
+      url: `/pages/register/register?openid=${openid}`
     })
   }
 });

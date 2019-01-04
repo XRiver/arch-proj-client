@@ -1,10 +1,12 @@
 // components/button/index.js
 Component({
+  behaviors: ['wx://form-field'],
   /**
    * 组件的属性列表
    */
   properties: {
-    content:String
+    content:String,
+    formType:String
   },
 
   /**
