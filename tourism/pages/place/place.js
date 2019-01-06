@@ -1,5 +1,5 @@
 // pages/place/place.js
-const getAttractionById = require('../../utils/api.js').getAttractionById
+const api = require('../../utils/api.js')
 
 Page({
 
@@ -7,10 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    trips:[
-    { id: 1, name: "夫子庙", content: "夫子庙是个好地方" }, 
-    { id: 2, name: "中山陵", content: "中山陵是个好地方"}],
-    trip:null
+    place:null
   },
 
   /**
@@ -19,13 +16,16 @@ Page({
   onLoad: function (options) {
     const that = this;
     const id = options.id;
-    getAttractionById({
+    this.setData({
+      id:id
+    })
+    api.getAttractionById({
       data:{
         aid:id
       },
       success:(res)=>{
         this.setData({
-          trip: res[0]
+          place: res[0]
         })
       }
     })
@@ -82,5 +82,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  addTrip:function(){
+    const id = this.data.id
+    wx.navigateTo({
+      url: `../trip_add/trip_add?id=${id}`,
+    });
   }
 })

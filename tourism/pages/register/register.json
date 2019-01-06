@@ -1,11 +1,7 @@
 {
   "usingComponents": {
-        "van-field": "/miniprogram_npm/vant-weapp/field/index",
-        "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
-        "v-button": 
-"/components/button/index",
-        "van-button":"/miniprogram_npm/vant-weapp/button/index"
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
+    "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index"
   }
-        
-        
 }

@@ -1,5 +1,6 @@
 // pages/register/register.js
 const app = getApp();
+const api = require('../../utils/api.js')
 
 Page({
 
@@ -77,6 +78,20 @@ Page({
     regData['realname'] = this.data.realInfo.realname
     regData['school'] = this.data.realInfo.school
     regData['openid'] = this.data.openid
-    console.log(regData)
+    // console.log(regData)
+    api.register({
+      data:{
+        openid: regData.openid,
+        uname: regData.realname,
+        school: regData.school,
+        pictureurl: regData.avatarUrl,
+        sex: regData.gender,
+        nickname: regData.nickName,
+        city: regData.city
+      },
+      success:(res)=>{
+        console.log(res)
+      }
+    })
   },
 })

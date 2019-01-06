@@ -1,0 +1,5 @@
+/* pages/trip_add/trip_add.wxss */
+.message{
+  padding-top:15rpx;
+  display:block;
+}

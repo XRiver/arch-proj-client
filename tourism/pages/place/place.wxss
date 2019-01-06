@@ -1,23 +1,36 @@
 /* pages/place/place.wxss */
-page{
+
+page {
   background-color: #fbf7ed;
 }
-.trip{
+
+.trip {
   padding: 40rpx 30rpx 0;
 }
-.trip .trip-top{
+
+.trip .trip-top {
   overflow: hidden;
 }
 
-.trip .trip-info{
+.trip .trip-info {
   max-width: 100%;
 }
-.trip .trip-info .h1{
+
+.trip .trip-info .h1 {
   font-size: 40rpx;
   line-height: 1;
   color: #4abdcc;
-  white-space: nowrap; 
-  text-overflow: ellipsis; 
-  overflow: hidden; 
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   margin-bottom: 9rpx;
+}
+
+.post-container{
+  display: flex;
+  justify-content:center;
+  position: fixed;
+  bottom: 20rpx;
+  width: 650rpx;
+
 }

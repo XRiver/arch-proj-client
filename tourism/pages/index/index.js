@@ -22,8 +22,9 @@ Page({
     // })
   },
   onLoad: function() {
-    this.setOpenId()
-    // this.checkLogin()
+    // this.setOpenId()
+    this.checkLogin()
+    // console.log(app.globalData)
   },
   onShow: function() {
 
@@ -97,7 +98,7 @@ Page({
     */
     api.login({
       data:{
-        openId: this.data.openid
+        openId: app.globalData.openid
       },
       success: function(res) {
         console.log(res)

@@ -6,7 +6,6 @@ Component({
    */
   properties: {
     content:String,
-    formType:String
   },
 
   /**

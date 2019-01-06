@@ -1,10 +1,12 @@
 //app.js
+import { HTTP } from '/utils/http.js'
+let http = new HTTP()
+
 App({
   globalData: {
     userInfo: null
   },
   onLaunch: function () {
-
   },
   
   alert: function (params) {

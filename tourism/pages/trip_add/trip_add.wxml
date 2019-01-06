@@ -1,0 +1,33 @@
+<!--pages/trip_add/trip_add.wxml-->
+
+<demo-block title="请选择出行日期（年月日）">
+  <van-datetime-picker
+    type="date"
+    value="{{ currentDate }}"
+    min-date="{{ minDate }}"
+    max-date="{{ maxDate }}"
+    bind:change="changeDate"
+  />
+</demo-block>
+
+<demo-block title="请选择出行时间">
+  <van-datetime-picker
+    type="time"
+    value="{{ time }}"
+    bind:change="changeTime"
+  />
+</demo-block>
+
+<van-cell-group class='message'>
+    <van-field
+      value="{{ message }}"
+      label="留言"
+      type="textarea"
+      placeholder="请输入留言"
+      rows="1"
+      autosize
+      border="{{ false }}"
+    />
+</van-cell-group>
+
+<v-button bind:tap="addTrip" content="确认"/>

@@ -1,10 +1,13 @@
 <!--pages/place/place.wxml-->
 <view class="trip">
-  <view class="trip-top" wx:if="{{ trip != null }}">
+  <view class="trip-top" wx:if="{{ place != null }}">
     <view class="trip-info">
-      <view class="h1">{{ trip.aname }}</view>
-      <text>{{trip.description}}</text>
+      <view class="h1">{{ place.aname }}</view>
+      <text>{{place.description}}</text>
     </view>
+  </view>
+  <view class="post-container">
+    <v-button bind:tap="addTrip" content="创建出行计划"/>
   </view>
 </view>
 
