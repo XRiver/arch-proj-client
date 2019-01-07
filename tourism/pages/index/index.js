@@ -22,8 +22,8 @@ Page({
     // })
   },
   onLoad: function() {
-    // this.setOpenId()
-    this.checkLogin()
+    this.setOpenId()
+    // this.checkLogin()
     // console.log(app.globalData)
   },
   onShow: function() {

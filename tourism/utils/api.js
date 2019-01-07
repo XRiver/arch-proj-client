@@ -18,7 +18,7 @@ const login = function(params) {
 
 const register = function(params) {
     http.request({
-        url:`${baseUrl}/signon`,
+        url:`${baseUrl}/register`,
         method:'POST',
         data:params.data,
         success:params.success

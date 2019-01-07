@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/place_list/place_list",
     "pages/trip_add/trip_add",
-    "pages/index/index",
+    
     "pages/register/register",
     "pages/place/place",
     "pages/trip/trip",
