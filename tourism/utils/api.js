@@ -43,7 +43,7 @@ const getAttractionById = function(params) {
 
 const createPlan = function(params) {
     http.request({
-        url:`${baseUrl}/createPlan`,
+        url:`${baseUrl}/plan/create`,
         method:'POST',
         data:params.data,
         success:params.success
@@ -52,7 +52,7 @@ const createPlan = function(params) {
 
 const searchPlanByAttractionName = function(params) {
     http.request({
-        url:`${baseUrl}/plans?type=aName&aId=${params.data.aName}`,
+        url:`${baseUrl}/plans?type=aname&aname=${params.data.aname}`,
         method:'GET',
         success:params.success
     })
@@ -60,15 +60,15 @@ const searchPlanByAttractionName = function(params) {
 
 const searchPlanByUserName = function(params) {
     http.request({
-        url:`${baseUrl}/plans?type=uName&aId=${params.data.uName}`,
+        url:`${baseUrl}/plans?type=uname&uname=${params.data.uname}`,
         method:'GET',
         success:params.success
     })
 }
 
-const joinPlan = function(params) {
+const applyPlan = function(params) {
     http.request({
-        url:`${baseUrl}/joinPlan`,
+        url:`${baseUrl}/plan/apply`,
         method:'POST',
         data:params.data,
         success:params.success
