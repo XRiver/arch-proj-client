@@ -1,6 +1,7 @@
 // pages/register/register.js
 const app = getApp();
 const api = require('../../utils/api.js')
+const util = require('../../utils/util.js')
 
 Page({
 
@@ -76,22 +77,29 @@ Page({
     })
     
     const regData = app.globalData.userInfo
+    
     regData['realname'] = this.data.realInfo.realname
     regData['school'] = this.data.realInfo.school
-    regData['openid'] = this.data.openid
-    // console.log(regData)
+    regData['openid'] = app.globalData.openid
     api.register({
-      data:{
-        openid: regData.openid,
-        uname: regData.realname,
-        school: regData.school,
-        pictureurl: regData.avatarUrl,
-        sex: regData.gender,
-        nickname: regData.nickName,
-        city: regData.city
-      },
+      data:util.setAttrsTo(
+        util.wxUInfo2backUInfo(regData),
+        {openid:app.globalData.openid}
+      ),
       success:(res)=>{
         console.log(res)
+        if(res.code == 0) {
+          app.alert({
+            'content': "注册成功"
+          });
+          wx.switchTab({
+            url:'/pages/place_list/place_list'
+          })
+        } else {
+          app.alert({
+            'content': "注册失败！请重试"
+          });
+        }
       }
     })
   },

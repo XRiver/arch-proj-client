@@ -1,9 +1,11 @@
 //login.js
 const app = getApp();
-import { HTTP } from '../../utils/http.js'
-let http = new HTTP()
 
+import { HTTP } from '../../utils/http.js'
 const api = require('../../utils/api.js')
+const util = require('../../utils/util.js')
+
+let http = new HTTP()
 
 Page({
   data: {
@@ -13,18 +15,17 @@ Page({
     regFlag: false,
     openid:null
   },
-  goToPlaceList: function() {
-    wx.switchTab({
-      url: '/pages/place_list/place_list',
-    })
-    // wx.navigateTo({
-    //   url: '/pages/place_list/place_list',
-    // })
-  },
   onLoad: function() {
-    this.setOpenId()
-    // this.checkLogin()
-    // console.log(app.globalData)
+    const storedOpenId = wx.getStorageSync('openid')
+    const that = this
+    if(storedOpenId) {
+      console.log('detected openid storage')
+      app.globalData.openid = storedOpenId
+      that.checkLogin()
+    } else {
+      console.log('No openid storage')
+      that.setOpenId()
+    }
   },
   onShow: function() {
 
@@ -64,12 +65,17 @@ Page({
           return;
         }
         var url = that.getUrl(res.code)
-        console.log(url)
         http.request({
           url: url,
           success: (res) => {
             that.setData({
               openid:res.openid
+            })
+            app.globalData.openid = res.openid
+            wx.setStorage({
+              key:'openid',
+              data:res.openid,
+              complete: that.checkLogin
             })
           }
         })
@@ -82,30 +88,21 @@ Page({
     return url
   },
 
-  checkLogin: function (event) {
+  checkLogin: function () {
     const that = this
-    /* 
-    http.request({
-      url: "login?openid =" + this.data.openid,
-      success: function (res) {
-        if (res.data.status != 1) {
-          that.setData({
-            regFlag: false
-          });
-        }
-      }
-    })
-    */
+
     api.login({
       data:{
-        openId: app.globalData.openid
+        openid: wx.getStorageSync('openid')
       },
       success: function(res) {
         console.log(res)
-        if (res.data.status != 1) {
-          that.setData({
-            regFlag: false
-          });
+        if (res.code == 0) { // 登录成功，可以读取userInfo
+          app.globalData.userInfo = util.backUInfo2wxUInfo(res.data)
+          that.goToPlaceList()
+        } else {
+          // 本openid登陆失败
+          // 也就是之前存储过openid，却没有注册过，那么就走正常路线
         }
       }
     })
@@ -122,7 +119,7 @@ Page({
     }
     // 获取用户信息
     var userInfo = e.detail.userInfo;
-    // console.log(e.detail)
+    console.log(e.detail)
     app.globalData.userInfo = userInfo
     that.goToRegister();
   },
@@ -131,6 +128,12 @@ Page({
     let openid = this.data.openid
     wx.navigateTo({
       url: `/pages/register/register?openid=${openid}`
+    })
+  },
+
+  goToPlaceList:function() {
+    wx.switchTab({
+      url:'/pages/place_list/place_list'
     })
   }
 });
