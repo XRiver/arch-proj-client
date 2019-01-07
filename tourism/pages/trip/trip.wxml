@@ -1,4 +1,5 @@
 <!--pages/trip/trip.wxml-->
+<import src="../../templates/trip/trip.wxml"/>
 <van-search
   value="{{ value }}"
   show-action
@@ -8,3 +9,10 @@
   bind:cancel="onCancel"
   bind:clear="onClear"
 />
+
+<block wx:for="{{ trips }}" wx:for-item="trip">
+    <template is="tem-trip" data="{{trip: trip}}"/>
+</block>
+
+
+

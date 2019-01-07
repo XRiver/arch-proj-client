@@ -1,20 +1,11 @@
 <!--pages/trip_add/trip_add.wxml-->
 
-<demo-block title="请选择出行日期（年月日）">
+<demo-block title="请选择出行日期（年/月/日/时/分）">
   <van-datetime-picker
-    type="date"
+    type="datetime"
     value="{{ currentDate }}"
     min-date="{{ minDate }}"
-    max-date="{{ maxDate }}"
-    bind:change="changeDate"
-  />
-</demo-block>
-
-<demo-block title="请选择出行时间">
-  <van-datetime-picker
-    type="time"
-    value="{{ time }}"
-    bind:change="changeTime"
+    bind:change="onChange"
   />
 </demo-block>
 
@@ -27,6 +18,7 @@
       rows="1"
       autosize
       border="{{ false }}"
+      bindinput="onInput"
     />
 </van-cell-group>
 

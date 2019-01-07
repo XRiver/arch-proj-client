@@ -1,11 +1,9 @@
-<template name="m-trip">
-  <view class="m-trip" bindtap="viewTrip" data-id="{{ place.aid }}" data-name="{{ place.aname }}" >            
-    <image class="cover" src="{{ place.pictureurl }}" mode="aspectFill"></image>
-    <view class="info">
-      <text class="h2">{{ place.aname }}</text>
-      <view class="detail">
-      <text>{{ place.location }}</text>
-      </view>
+<template name="tem-trip">
+  <van-panel title="{{trip.aName}}" desc="{{trip.creatorName}}" status="状态" use-footer-slot>
+    <view class="time">{{trip.travelTime}}</view>
+    <view class="content">{{trip.detail}}</view>
+    <view slot="footer" class="footer">
+      <van-button size="small" type="primary">申请加入</van-button>
     </view>
-</view>
+  </van-panel>
 </template>

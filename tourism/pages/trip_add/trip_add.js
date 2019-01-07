@@ -1,4 +1,6 @@
 // pages/trip_add/trip_add.js
+const api = require('../../utils/api.js')
+
 Page({
 
   /**
@@ -8,32 +10,41 @@ Page({
     minHour: 10,
     maxHour: 20,
     minDate: new Date(2019, 0, 1).getTime(),
-    maxDate: new Date(2025, 10, 1).getTime(),
-    currentDate: new Date(2018, 2, 1).getTime(),
+    currentDate: new Date(2019, 0, 1).getTime(),
     time: '00:00',
-    loading: false
-  },
-  changeDate(event) {
-    let y = event.detail.__data__.pickerValue[0]
-    let m = event.detail.__data__.pickerValue[1]
-    let d = event.detail.__data__.pickerValue[2]
-    let year = event.detail.__data__.columns[0][y]
-    let month = event.detail.__data__.columns[1][m]
-    let day = event.detail.__data__.columns[2][d]
-    console.log(`${year}-${month}-${day}`)
-  },
-  changeTime(event){
-    let h = event.detail.__data__.pickerValue[0]
-    let min = event.detail.__data__.pickerValue[1]
-    let hour = event.detail.__data__.columns[0][h]
-    let minute = event.detail.__data__.columns[1][min]
-    console.log(`${hour}-${minute}`)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      placeid: options.id
+    })
+  },
+
+  onChange(event){
+    let timeStamp = event.detail.__viewData__.innerValue
+    console.log(timeStamp)
+    this.setData({
+      timeStamp: timeStamp/1000
+    })
+  },
+  onInput(e){
+    console.log(e.detail)
+    this.setData({
+      message: e.detail
+    })
+  },
+
+  addTrip(){
+    let that = this
+    api.createPlan({
+      data:{
+        traveltime: that.data.timeStamp,
+        detail: that.data.message
+      }
+    })
   },
 
   /**

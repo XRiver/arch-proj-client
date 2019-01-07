@@ -1,5 +1,5 @@
 <!--pages/place_list/place_list.wxml-->
-<import src="../../templates/trip/trip.wxml"/>
+<import src="../../templates/place/place.wxml"/>
 
 <van-search
   value="{{ value }}"

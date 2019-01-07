@@ -1,5 +1,5 @@
 /* pages/place_list/place_list.wxss */
-@import "../../templates/trip/trip.wxss";
+@import "../../templates/place/place.wxss";
 
 page{
   background-color: #f6f6f6;

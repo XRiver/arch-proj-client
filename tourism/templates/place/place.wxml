@@ -1,0 +1,11 @@
+<template name="m-trip">
+  <view class="m-trip" bindtap="viewTrip" data-id="{{ place.aid }}" data-name="{{ place.aname }}" >            
+    <image class="cover" src="{{ place.pictureurl }}" mode="aspectFill"></image>
+    <view class="info">
+      <text class="h2">{{ place.aname }}</text>
+      <view class="detail">
+      <text>{{ place.location }}</text>
+      </view>
+    </view>
+</view>
+</template>

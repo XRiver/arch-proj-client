@@ -1,1 +1,2 @@
 /* pages/trip/trip.wxss */
+@import "../../templates/trip/trip.wxss";

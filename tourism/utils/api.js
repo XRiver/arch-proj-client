@@ -83,5 +83,5 @@ export {
   createPlan,
   searchPlanByAttractionName,
   searchPlanByUserName,
-  joinPlan
+  applyPlan
 }

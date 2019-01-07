@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    trips:[{
+      creatorName:"张三",
+      aName: "总统府",
+      travelTime:"2019-01-01",
+      detail:"come on guys!!!"
+    }]
   },
 
   /**
