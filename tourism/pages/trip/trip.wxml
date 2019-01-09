@@ -1,14 +1,15 @@
 <!--pages/trip/trip.wxml-->
 <import src="../../templates/trip/trip.wxml"/>
+
 <van-search
   value="{{ value }}"
-  show-action
-  placeholder="请输入搜索关键词"
+  placeholder="请输入景点名或创建者的真实姓名"
+  use-action-slot
   bind:change="onChange"
   bind:search="onSearch"
-  bind:cancel="onCancel"
-  bind:clear="onClear"
-/>
+>
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
 
 <block wx:for="{{ trips }}" wx:for-item="trip">
     <template is="tem-trip" data="{{trip: trip}}"/>

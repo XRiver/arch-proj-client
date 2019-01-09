@@ -1,5 +1,7 @@
 // pages/trip_add/trip_add.js
+const app = getApp();
 const api = require('../../utils/api.js')
+const util = require('../../utils/util.js')
 
 Page({
 
@@ -26,10 +28,13 @@ Page({
   onChange(event){
     let timeStamp = event.detail.__viewData__.innerValue
     console.log(timeStamp)
+    // const date = new Date(timeStamp/1000)
+    // const formateDate = util.formatTime(date)
     this.setData({
-      timeStamp: timeStamp/1000
+      timeStamp: timeStamp
     })
   },
+
   onInput(e){
     console.log(e.detail)
     this.setData({
@@ -39,10 +44,32 @@ Page({
 
   addTrip(){
     let that = this
+    const openid = wx.getStorageSync('openid')
     api.createPlan({
       data:{
+        aid: that.data.placeid,
+        openid: openid,
         traveltime: that.data.timeStamp,
         detail: that.data.message
+      },
+      success: (res) => {
+        console.log(res)
+        if (res.code == 0) {
+          wx.showToast({
+            title: '创建成功',
+            icon: 'success',
+          })
+          setTimeout(function(){
+            wx.switchTab({
+              url: '/pages/place_list/place_list'
+          })
+          },1000)
+
+        } else {
+          app.alert({
+            'content': "创建失败！请重试"
+          });
+        }
       }
     })
   },

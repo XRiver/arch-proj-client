@@ -1,4 +1,6 @@
 // pages/trip/trip.js
+const api = require('../../utils/api.js')
+
 Page({
 
   /**
@@ -11,6 +13,40 @@ Page({
       travelTime:"2019-01-01",
       detail:"come on guys!!!"
     }]
+  },
+
+  onChange(e) {
+    this.setData({
+      condition: e.detail
+    });
+  },
+
+  onSearch(event) {
+    let that = this
+    if (that.data.condition) {
+      api.searchPlan({
+        data:{
+          condition: that.data.condition
+        },
+        success:(res)=>{
+          console.log(res)
+        }
+      })
+    }
+  },
+
+  onCancel() {
+    wx.showToast({
+      title: '取消',
+      icon: 'none'
+    });
+  },
+
+  onClear() {
+    wx.showToast({
+      title: '清空',
+      icon: 'none'
+    });
   },
 
   /**
