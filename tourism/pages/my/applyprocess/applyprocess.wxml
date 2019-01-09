@@ -7,15 +7,13 @@
       <view class="page__bd">
         <view class="weui-cells weui-cells_after-title">
           <text>出行计划</text>
-          <text>{{JSON.stringfy(info.plan)}}</text>
+          <text>{{info.plan}}</text>
           <text>申请人信息</text>
-          <text>{{JSON.stringfu(info.user)}}</text>
-          <button class="confirm-btn" bindtap='process(True)'>同意</button>
-          <button class="error-btn" bindtap='process(False)'>否决</button>
+          <text>{{info.user}}</text>
+          <button class="confirm-btn" bindtap='approve'>同意</button>
+          <button class="error-btn" bindtap='reject'>拒绝</button>
         </view>
       </view>
-
-
     </view>
   </view>
 </view>

@@ -14,7 +14,6 @@ Page({
      }
    */
   data: {
-    applylist:[]
   },
 
   /**
@@ -79,14 +78,14 @@ Page({
     let pass = choice?1:0
     api.processApply({
       data:{
-        applyid:that.info.applyid,
+        applyid:that.data.info.applyid,
         pass:pass
       },
       success:function(res){
         console.log('已完成审批'+choice)
         console.log(res)
         if(res.code == 0) { //成功
-          app.alert('审批成功！已经' + choice ? '同意' : '拒绝')
+          // app.alert('审批成功！已经' + choice ? '同意' : '拒绝')
           wx.navigateBack({
             delta:1
           })
@@ -97,5 +96,11 @@ Page({
         }
       }
     })
+  },
+  approve:function(){
+    this.process(true)
+  },
+  reject:function(){
+    this.process(false)
   }
 })
