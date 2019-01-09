@@ -50,17 +50,9 @@ const createPlan = function(params) {
     })
 }
 
-const searchPlanByAttractionName = function(params) {
+const searchPlan = function(params) {
     http.request({
-        url:`${baseUrl}/plans?type=aname&aname=${params.data.aname}`,
-        method:'GET',
-        success:params.success
-    })
-}
-
-const searchPlanByUserName = function(params) {
-    http.request({
-        url:`${baseUrl}/plans?type=uname&uname=${params.data.uname}`,
+        url:`${baseUrl}/plans?condition=${params.data.condition}`,
         method:'GET',
         success:params.success
     })
@@ -75,13 +67,31 @@ const applyPlan = function(params) {
     })
 }
 
+const getPlanApplicants = function(params) {
+    http.request({
+        url:`${baseUrl}/plan/apply?pid=${params.data.pid}`,
+        method:'GET',
+        success:params.success
+    })
+}
+
+const processApply = function(params) {
+    http.request({
+        url:`${baseUrl}/plan/apply`,
+        method:'PUT',
+        data:params.data,
+        success:params.success
+    })
+}
+
 export {
   login,
   register,
   getAttractions,
   getAttractionById,
   createPlan,
-  searchPlanByAttractionName,
-  searchPlanByUserName,
-  applyPlan
+  searchPlan,
+  applyPlan,
+  getPlanApplicants,
+  processApply
 }
