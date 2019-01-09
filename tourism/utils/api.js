@@ -84,6 +84,15 @@ const processApply = function(params) {
     })
 }
 
+const getMyPlans = function(params) {
+    // http.request({
+    //     url:`${baseUrl}/plan/apply`,
+    //     method:'GET',
+    //     success:params.success
+    // })
+    params.success([])
+}
+
 export {
   login,
   register,
@@ -93,5 +102,6 @@ export {
   searchPlan,
   applyPlan,
   getPlanApplicants,
-  processApply
+  processApply,
+  getMyPlans
 }

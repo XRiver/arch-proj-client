@@ -75,12 +75,20 @@ Page({
     this.setData({
       realInfo: e.detail.value
     })
-    
+
     const regData = app.globalData.userInfo
     
     regData['realname'] = this.data.realInfo.realname
     regData['school'] = this.data.realInfo.school
     regData['openid'] = app.globalData.openid
+
+    if(!regData['realname'] || !regData['school']) {
+      app.alert({
+        content:'请填写所有字段'
+      })
+      return;
+    }
+
     api.register({
       data:util.setAttrsTo(
         util.wxUInfo2backUInfo(regData),

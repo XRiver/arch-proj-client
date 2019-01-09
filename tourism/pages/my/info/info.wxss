@@ -1,0 +1,10 @@
+/* pages/my/my.wxss */
+.head{display:flex;flex-direction: column;background: #efefef;width:100%;padding: 100rpx 0rpx; align-items: center;  justify-content: space-between;background: #00b7f3}
+.head image{width:150rpx;height:150rpx;margin:0 auto;border-radius: 50%;}
+.weui-cells {
+    margin-top: 0px;
+}
+.list view{font-size:12pt;}
+.list .weui-cell{padding: 15px !important;}
+.list .weui-cell__bd {padding-left: 24px;}
+.page__foot{padding-top: 15px;}

@@ -1,0 +1,30 @@
+<!--pages/my/my.wxml-->
+<view class="page">
+  <!--主体-->
+  <view class="page__bd">
+    <view class="list">
+
+      <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+          <view wx:if="{{applylist.length > 0}}">
+            <view wx:for="{{applylist}}" wx:for-index="idx" wx:for-item="applyinfo">
+              <navigator url="/pages/my/applyprocess/applyprocess?info={{applyinfo.encoded}}">
+                <text>
+                  计划信息：{{applyinfo.plan.details}}
+                  申请人：{{applyinfo.user.uname}}
+                </text>
+              </navigator>
+            </view>
+          </view>
+          <view wx:else>
+            <text>
+              还没有人对你的出行计划发起申请
+            </text>
+          </view>
+        </view>
+      </view>
+
+
+    </view>
+  </view>
+</view>
