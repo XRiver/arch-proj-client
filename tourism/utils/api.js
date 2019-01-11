@@ -50,7 +50,7 @@ const createPlan = function(params) {
     })
 }
 
-const getPlanByOpenId = function(param) {
+const getPlanByOpenId = function(params) {
     http.request({
         url:`${baseUrl}/plan/openid/${params.data.openid}`,
         method:'GET',
@@ -83,7 +83,7 @@ const applyPlan = function(params) {
     })
 }
 
-const getPlanApplicants = function(params) {
+const getPlanNewApplicants = function(params) {
     http.request({
         url:`${baseUrl}/plan/apply/${params.data.pid}`,
         method:'GET',
@@ -110,6 +110,6 @@ export {
   searchPlanByUname,
   searchPlanByAname,
   applyPlan,
-  getPlanApplicants,
+  getPlanNewApplicants,
   processApply
 }

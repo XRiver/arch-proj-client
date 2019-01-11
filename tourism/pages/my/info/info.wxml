@@ -10,7 +10,7 @@
             <view wx:for="{{applylist}}" wx:for-index="idx" wx:for-item="applyinfo">
               <navigator url="/pages/my/applyprocess/applyprocess?info={{applyinfo.encoded}}">
                 <text>
-                  计划信息：{{applyinfo.plan.details}}
+                  计划地点：{{applyinfo.plan.aname}}
                   申请人：{{applyinfo.user.uname}}
                 </text>
               </navigator>

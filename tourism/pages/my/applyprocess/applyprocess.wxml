@@ -6,10 +6,15 @@
 
       <view class="page__bd">
         <view class="weui-cells weui-cells_after-title">
-          <text>出行计划</text>
-          <text>{{info.plan}}</text>
-          <text>申请人信息</text>
-          <text>{{info.user}}</text>
+          <text>
+          原出行计划：
+            景点：{{info.plan.aname}}
+            出行时间：{{info.plan.traveltime}}
+          申请人信息：
+            姓名：{{info.user.uname}}
+            性别：{{info.user.sex}}
+            学校：{{info.user.school}}
+          </text>
           <button class="confirm-btn" bindtap='approve'>同意</button>
           <button class="error-btn" bindtap='reject'>拒绝</button>
         </view>
