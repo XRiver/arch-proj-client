@@ -12,13 +12,13 @@
 </van-search>
 
 <view>
-<text>按景点名的搜索结果</text>
+<!-- <text>按景点名的搜索结果</text> -->
 <block wx:for="{{ trips1 }}" wx:for-item="trip">
     <template is="tem-trip" data="{{trip: trip}}"/>
 </block>
 </view>
 <view>
-<text>按真实名的搜索结果</text>
+<!-- <text>按真实名的搜索结果</text> -->
 <block wx:for="{{ trips2 }}" wx:for-item="trip">
     <template is="tem-trip" data="{{trip: trip}}"/>
 </block>

@@ -1,5 +1,7 @@
 // pages/trip/trip.js
 const api = require('../../utils/api.js')
+const util = require('../../utils/util.js')
+const app = getApp();
 
 Page({
 
@@ -7,10 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    trips:null
-    // trips:[{
-    //   creatorName:"张三",
-    //   aName: "总统府",
+    // trips:null
+    // trips1:[{
+    //   uname:"张三",
+    //   aname: "总统府",
     //   travelTime:"2019-01-01",
     //   detail:"come on guys!!!"
     // }]
@@ -30,7 +32,13 @@ Page({
           aname: that.data.searchInfo
         },
         success:(res)=>{
+          for (let trip of res) {
+            let date = new Date(parseInt(trip.traveltime))
+            let format_time = util.formatTime(date)
+            trip['formatTime'] = format_time
+          }
           console.log(res)
+
           that.setData({
             trips1:res
           })
@@ -72,16 +80,24 @@ Page({
     });
   },
 
+  inputMsg(event){
+    this.setData({
+      mess: event.detail
+    })
+  },
+
   apply(e){
     const pid = e.currentTarget.dataset.pid
     const openid = wx.getStorageSync('openid')
+    const that =this
     api.applyPlan({
       data:{
         pid:pid,
-        openid: openid
+        openid: openid,
+        mess: that.data.mess
       },
       success: (res) => {
-        // console.log(res)
+        console.log(res)
         if (res.code == 0) {
           wx.showToast({
             title: '申请成功',
@@ -89,7 +105,7 @@ Page({
           })
         } else {
           app.alert({
-            'content': "创建失败！请重试"
+            'content': "您已申请过此出行计划，请勿重复申请。"
           });
         }
       }
