@@ -10,7 +10,7 @@ const http = syncHttp
 // 所有的params格式应当为： {data:{需传入参数}, success:参数为response body的回调函数}
 const login = function(params) {
     http.request({
-        url:`${baseUrl}/login?openid=${params.data.openid}`,
+        url:`${baseUrl}/login/${params.data.openid}`,
         method:'GET',
         success:params.success
     })
@@ -27,7 +27,7 @@ const register = function(params) {
 
 const getAttractions = function(params) {
     http.request({
-        url:`${baseUrl}/attractions?type=all`,
+        url:`${baseUrl}/attractions`,
         method:'GET',
         success:params.success
     })
@@ -35,7 +35,7 @@ const getAttractions = function(params) {
 
 const getAttractionById = function(params) {
     http.request({
-        url:`${baseUrl}/attractions?type=single&aid=${params.data.aid}`,
+        url:`${baseUrl}/attractions/${params.data.aid}`,
         method:'GET',
         success:params.success
     })
@@ -43,16 +43,32 @@ const getAttractionById = function(params) {
 
 const createPlan = function(params) {
     http.request({
-        url:`${baseUrl}/plan/create`,
+        url:`${baseUrl}/plan`,
         method:'POST',
         data:params.data,
         success:params.success
     })
 }
 
-const searchPlan = function(params) {
+const getPlanByOpenId = function(param) {
     http.request({
-        url:`${baseUrl}/plans?condition=${params.data.condition}`,
+        url:`${baseUrl}/plan/openid/${params.data.openid}`,
+        method:'GET',
+        success:params.success
+    })
+}
+
+const searchPlanByUname = function(params) {
+    http.request({
+        url:`${baseUrl}/plan/uname/${params.data.uname}`,
+        method:'GET',
+        success:params.success
+    })
+}
+
+const searchPlanByAname = function(params) {
+    http.request({
+        url:`${baseUrl}/plan/attraction/${params.data.aname}`,
         method:'GET',
         success:params.success
     })
@@ -69,7 +85,7 @@ const applyPlan = function(params) {
 
 const getPlanApplicants = function(params) {
     http.request({
-        url:`${baseUrl}/plan/apply?pid=${params.data.pid}`,
+        url:`${baseUrl}/plan/apply/${params.data.pid}`,
         method:'GET',
         success:params.success
     })
@@ -84,24 +100,16 @@ const processApply = function(params) {
     })
 }
 
-const getMyPlans = function(params) {
-    // http.request({
-    //     url:`${baseUrl}/plan/apply`,
-    //     method:'GET',
-    //     success:params.success
-    // })
-    params.success([])
-}
-
 export {
   login,
   register,
   getAttractions,
   getAttractionById,
   createPlan,
-  searchPlan,
+  getPlanByOpenId,
+  searchPlanByUname,
+  searchPlanByAname,
   applyPlan,
   getPlanApplicants,
-  processApply,
-  getMyPlans
+  processApply
 }
