@@ -7,32 +7,55 @@ Page({
    * 页面的初始数据
    */
   data: {
-    trips:[{
-      creatorName:"张三",
-      aName: "总统府",
-      travelTime:"2019-01-01",
-      detail:"come on guys!!!"
-    }]
+    trips:null
+    // trips:[{
+    //   creatorName:"张三",
+    //   aName: "总统府",
+    //   travelTime:"2019-01-01",
+    //   detail:"come on guys!!!"
+    // }]
   },
 
   onChange(e) {
     this.setData({
-      condition: e.detail
+      searchInfo: e.detail
     });
   },
 
   onSearch(event) {
     let that = this
-    if (that.data.condition) {
-      api.searchPlan({
+    if (that.data.searchInfo) {
+      api.searchPlanByAname({
         data:{
-          condition: that.data.condition
+          aname: that.data.searchInfo
         },
         success:(res)=>{
           console.log(res)
+          that.setData({
+            trips1:res
+          })
         }
       })
+
+      api.searchPlanByUname({
+        data: {
+          uname: that.data.searchInfo
+        },
+        success: (res) => {
+          console.log(res)
+          that.setData({
+            trips2: res
+          })
+        }
+      })
+
+      // let trips = that.data.trips1 == [] ? that.data.trips2 : that.data.trips1
+      
+      // that.setData({
+      //   trips: trips
+      // })
     }
+
   },
 
   onCancel() {
@@ -49,6 +72,29 @@ Page({
     });
   },
 
+  apply(e){
+    const pid = e.currentTarget.dataset.pid
+    const openid = wx.getStorageSync('openid')
+    api.applyPlan({
+      data:{
+        pid:pid,
+        openid: openid
+      },
+      success: (res) => {
+        // console.log(res)
+        if (res.code == 0) {
+          wx.showToast({
+            title: '申请成功',
+            icon: 'success',
+          })
+        } else {
+          app.alert({
+            'content': "创建失败！请重试"
+          });
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
