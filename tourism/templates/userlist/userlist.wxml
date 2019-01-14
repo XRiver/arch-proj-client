@@ -1,0 +1,25 @@
+<template name="userlist1">
+  <van-cell-group>
+    <view class="user">
+      <image class="avatar" src="{{ user.pictureurl }}"></image>
+      <view class="userInfo">{{user.uname}}</view>
+      <view class="userInfo">{{user.school}}</view>
+      <view class="userInfo">{{user.sex}}</view>
+    </view>
+    <view class='grade'>
+    <text>评分:</text>
+    <van-rate custom-class="van-rate" icon="like" void-icon="like-o" color="#E31D1A" data-uid="{{user.openid}}" size="{{ 25 }}" bind:change="onChange" />
+    </view>
+    </van-cell-group>
+</template>
+
+<template name="userlist2">
+  <van-cell-group>
+    <view class="user">
+      <image class="avatar" src="{{ user.pictureurl }}"></image>
+      <view class="userInfo">{{user.uname}}</view>
+      <view class="userInfo">{{user.school}}</view>
+      <view class="userInfo">{{user.sex}}</view>
+    </view>
+    </van-cell-group>
+</template>

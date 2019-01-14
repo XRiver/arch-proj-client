@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/my/my",
+    "pages/my/plan_detail/plan_detail",
     "pages/trip/trip",
     "pages/index/index",
-    "pages/my/my",
     "pages/place_list/place_list",
     "pages/trip_add/trip_add",
     "pages/register/register",
@@ -10,6 +11,7 @@
     "pages/my/info/info",
     "pages/my/applyprocess/applyprocess",
     "pages/my/myplan/myplan"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

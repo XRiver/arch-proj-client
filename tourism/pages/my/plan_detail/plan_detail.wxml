@@ -1,0 +1,15 @@
+<!--pages/my/plan_detail/plan_detail.wxml-->
+<import src="../../../templates/userlist/userlist.wxml"/>
+
+<van-panel title="此次出行团队成员">
+<block wx:if='{{state==2}}'>
+<block wx:for="{{ userList }}" wx:for-item="user">
+  <template is="userlist1" data="{{user: user}}"/>
+</block>
+</block>
+<block wx:else>
+ <block wx:for="{{ userList }}" wx:for-item="user">
+  <template is="userlist2" data="{{user: user}}"/>
+</block>
+</block>
+</van-panel>
