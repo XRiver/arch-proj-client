@@ -1,7 +1,7 @@
 const api = require('../../../utils/api')
 
 const app = getApp()
-// pages/my/info/applyprocess.js
+// pages/my/applyprocess/applyprocess.js
 Page({
 
   /**

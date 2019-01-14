@@ -51,24 +51,27 @@ const createPlan = function(params) {
 }
 
 const getPlanByOpenId = function(params) {
+    const state = params.data.state?params.data.state:'0123';
     http.request({
-        url:`${baseUrl}/plan/openid/${params.data.openid}`,
+        url:`${baseUrl}/plan/openid/${params.data.openid}?state=${state}`,
         method:'GET',
         success:params.success
     })
 }
 
 const searchPlanByUname = function(params) {
+    const state = params.data.state?params.data.state:'0123';
     http.request({
-        url:`${baseUrl}/plan/uname/${params.data.uname}`,
+        url:`${baseUrl}/plan/uname/${params.data.uname}?state=${state}`,
         method:'GET',
         success:params.success
     })
 }
 
 const searchPlanByAname = function(params) {
+    const state = params.data.state?params.data.state:'0123';
     http.request({
-        url:`${baseUrl}/plan/attraction/${params.data.aname}`,
+        url:`${baseUrl}/plan/attraction/${params.data.aname}?state=${state}`,
         method:'GET',
         success:params.success
     })
@@ -100,6 +103,24 @@ const processApply = function(params) {
     })
 }
 
+const switchPlanState = function(params) {
+    http.request({
+        url:`${baseUrl}/plan/state`,
+        method:'PUT',
+        data:params.data,
+        success:params.success
+    })
+}
+
+const evaluateMember = function(params) {
+    http.request({
+        url:`${baseUrl}/plan/evaluation`,
+        method:'POST',
+        data:params.data,
+        success:params.success
+    })
+}
+
 export {
   login,
   register,
@@ -111,5 +132,7 @@ export {
   searchPlanByAname,
   applyPlan,
   getPlanNewApplicants,
-  processApply
+  processApply,
+  switchPlanState,
+  evaluateMember
 }
