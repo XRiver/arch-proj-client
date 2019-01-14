@@ -2,7 +2,7 @@ const api = require('../../../utils/api')
 
 const app = getApp()
 // pages/my/info/info.js
-// 功能：根据自己创建的出行计划，获取所有未审批的计划申请者
+// 功能：根据自己创建的尚未出行的计划，获取所有未审批的计划申请者
 //      并且根据申请者进入对应审批页面
 Page({
 
@@ -17,8 +17,10 @@ Page({
   	uname：String；   创建者姓名
     traveltime: String;出行时间 时间戳
     detail: String;  计划详细信息
+    
     applylist：String； 申请者的编号，以逗号分隔
     
+
     User实体格式
     openid: string;  微信号唯一标识
     uname： string;  真实姓名
