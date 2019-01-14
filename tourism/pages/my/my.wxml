@@ -20,7 +20,7 @@
       <view class="page__bd">
         <view class="weui-cells weui-cells_after-title">
 
-          <navigator url="/pages/my/follow/follow" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <navigator url="/pages/my/myplan/myplan" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
             <view class="weui-cell__bd">我创建的出行计划</view>
             <!--<view class="weui-cell__ft weui-cell__ft_in-access">{{infoCount}}</view>-->
           </navigator>

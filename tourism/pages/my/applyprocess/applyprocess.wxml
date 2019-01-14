@@ -1,4 +1,4 @@
-<!--pages/my/my.wxml-->
+<!--pages/my/applyprocess/applyprocess.wxml-->
 <view class="page">
   <!--主体-->
   <view class="page__bd">

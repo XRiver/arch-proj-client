@@ -121,6 +121,14 @@ const evaluateMember = function(params) {
     })
 }
 
+const getPlanByPid = function(params) {
+    http.request({
+        url:`${baseUrl}/plan/pid/${params.data.pid}`,
+        method:'GET',
+        success:params.success
+    })     
+}
+
 export {
   login,
   register,
@@ -134,5 +142,6 @@ export {
   getPlanNewApplicants,
   processApply,
   switchPlanState,
-  evaluateMember
+  evaluateMember,
+  getPlanByPid
 }

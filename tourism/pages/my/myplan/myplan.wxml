@@ -1,0 +1,91 @@
+<!--pages/my/myplan/myplan.wxml-->
+<view class="page">
+  <!--主体-->
+  <view class="page__bd">
+    <view class="list">
+
+      <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+          <view wx:if="{{planlist.length > 0}}">
+            <view wx:for="{{planlist}}" wx:for-index="idx" wx:for-item="plan">       
+              <view wx:if="{{plan.state == 0}}">
+                <van-cell-group> <!-- TODO 可以给每一种出行计划带上不同的CSS，比如浅灰、绿色字体等等 -->
+                  <van-cell
+                    title="未出行计划"
+                    value="{{plan.aname}}"
+                    size="large"
+                  />
+                  <van-cell
+                    title="出行日期"
+                    value="{{applyinfo.user.uname}}"
+                    size="large"
+                  />
+                  <van-button size="small" id="setState.{{plan.pid}}.1" class="demo-margin-right" bindtap='handleButton'>开始计划</van-button>
+                  <van-button size="small" id="setState.{{plan.pid}}.3" class="demo-margin-right" bindtap='handleButton'>取消计划</van-button>
+                  <van-button size="small" id="getDetail.{{plan.pid}}" class="demo-margin-right" bindtap='handleButton'>查看详细</van-button>
+                </van-cell-group>
+              </view>
+
+              <view wx:if="{{plan.state == 1}}">
+
+                <van-cell-group> <!-- TODO 可以给每一种出行计划带上不同的CSS，比如浅灰、绿色字体等等 -->
+                  <van-cell
+                    title="正在出行计划"
+                    value="{{plan.aname}}"
+                    size="large"
+                  />
+                  <van-cell
+                    title="出行日期"
+                    value="{{applyinfo.user.uname}}"
+                    size="large"
+                  />
+                  <van-button size="small" id="setState.{{plan.pid}}.2" class="demo-margin-right" bindtap='handleButton'>结束计划</van-button>
+                  <van-button size="small" id="getDetail.{{plan.pid}}" class="demo-margin-right" bindtap='handleButton'>查看详细</van-button>
+                </van-cell-group>
+              </view>
+
+              <view wx:if="{{plan.state == 2}}">
+                <van-cell-group> <!-- TODO 可以给每一种出行计划带上不同的CSS，比如浅灰、绿色字体等等 -->
+                  <van-cell
+                    title="已完成计划"
+                    value="{{plan.aname}}"
+                    size="large"
+                  />
+                  <van-cell
+                    title="出行日期"
+                    value="{{applyinfo.user.uname}}"
+                    size="large"
+                  />
+                  <van-button size="small" id="getDetail.{{plan.pid}}" class="demo-margin-right" bindtap='handleButton'>查看详细</van-button>
+                </van-cell-group>
+              </view>
+
+              <view wx:if="{{plan.state == 3}}">
+                <van-cell-group> <!-- TODO 可以给每一种出行计划带上不同的CSS，比如浅灰、绿色字体等等 -->
+                  <van-cell
+                    title="未出行计划"
+                    value="{{plan.aname}}"
+                    size="large"
+                  />
+                  <van-cell
+                    title="出行日期"
+                    value="{{applyinfo.user.uname}}"
+                    size="large"
+                  />
+                  <van-button size="small" id="getDetail.{{plan.pid}}" class="demo-margin-right" bindtap='handleButton'>查看详细</van-button>
+                </van-cell-group>
+              </view>
+            </view>
+          </view>
+          <view wx:else>
+            <text>
+              你还没有创建过出行计划！
+            </text>
+          </view>
+        </view>
+      </view>
+
+
+    </view>
+  </view>
+</view>

@@ -8,7 +8,8 @@
     "pages/register/register",
     "pages/place/place",
     "pages/my/info/info",
-    "pages/my/applyprocess/applyprocess"
+    "pages/my/applyprocess/applyprocess",
+    "pages/my/myplan/myplan"
   ],
   "window": {
     "backgroundTextStyle": "light",
