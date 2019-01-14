@@ -65,6 +65,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.refreshPlans()
   },
 
   /**
@@ -145,7 +146,7 @@ Page({
 
   getDetail:function(pid) {
     wx.navigateTo({
-      url:`../plandetail/plandetail?pid=${pid}`
+      url:`../plan_detail/plan_detail?pid=${pid}`
     })
   }
 })
