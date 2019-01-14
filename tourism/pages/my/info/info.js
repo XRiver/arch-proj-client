@@ -47,7 +47,8 @@ Page({
     const that = this
     api.getPlanByOpenId({
       data:{
-        openid:wx.getStorageSync('openid')
+        openid:wx.getStorageSync('openid'),
+        state:'0' // 只有未出行计划才可以加入成员
       },
       success:function(res) {
         console.log(res)
