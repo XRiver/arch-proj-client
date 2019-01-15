@@ -17,13 +17,31 @@
                   />
                   <van-cell
                     title="出行日期"
-                    value="{{applyinfo.user.uname}}"
+                    value="{{plan.traveltime}}"
                     size="large"
                   />
-                  <van-button size="small" id="setState.{{plan.pid}}.1" class="demo-margin-right" bindtap='handleButton'>开始计划</van-button>
-                  <van-button size="small" id="setState.{{plan.pid}}.3" class="demo-margin-right" bindtap='handleButton'>取消计划</van-button>
-                  <van-button size="small" id="getDetail.{{plan.pid}}" class="demo-margin-right" bindtap='handleButton'>查看详细</van-button>
                 </van-cell-group>
+                <van-row padding>
+
+                  <van-col span="8">
+                    <van-button size="small" id="setState.{{plan.pid}}.1" class="demo-margin-right" bindtap='handleButton'>
+                      开始计划
+                    </van-button>
+                  </van-col>
+
+                  <van-col span="8">
+                    <van-button size="small" id="setState.{{plan.pid}}.3" class="demo-margin-right" bindtap='handleButton'>
+                      取消计划
+                    </van-button>
+                  </van-col>
+
+                  <van-col span="8">
+                    <van-button size="small" id="getDetail.{{plan.pid}}" class="demo-margin-right" bindtap='handleButton'>
+                      查看详细
+                    </van-button>
+                  </van-col>
+
+                </van-row>
               </view>
 
               <view wx:if="{{plan.state == 1}}">
@@ -36,7 +54,7 @@
                   />
                   <van-cell
                     title="出行日期"
-                    value="{{applyinfo.user.uname}}"
+                    value="{{plan.traveltime}}"
                     size="large"
                   />
                   <van-button size="small" id="setState.{{plan.pid}}.2" class="demo-margin-right" bindtap='handleButton'>结束计划</van-button>
@@ -53,7 +71,7 @@
                   />
                   <van-cell
                     title="出行日期"
-                    value="{{applyinfo.user.uname}}"
+                    value="{{plan.traveltime}}"
                     size="large"
                   />
                   <van-button size="small" id="getDetail.{{plan.pid}}" class="demo-margin-right" bindtap='handleButton'>查看详细</van-button>
@@ -69,7 +87,7 @@
                   />
                   <van-cell
                     title="出行日期"
-                    value="{{applyinfo.user.uname}}"
+                    value="{{plan.traveltime}}"
                     size="large"
                   />
                   <van-button size="small" id="getDetail.{{plan.pid}}" class="demo-margin-right" bindtap='handleButton'>查看详细</van-button>
