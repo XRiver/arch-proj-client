@@ -123,7 +123,7 @@ Page({
     api.switchPlanState({
       data:{
         pid:pid,
-        state:state
+        state:""+state
       },
       success:function(res) {
         console.log(res)
