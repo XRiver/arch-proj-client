@@ -1,0 +1,31 @@
+<template name="comment_upload">
+    <view class="comment-input-area">
+        <view class="comment-title-wrap">
+        <input class="comment-title" placeholder="请输入标题" maxlength="20" placeholder-style="color:#b3b3b3;font-size:18px;" bindinput="handleTitleInput"></input>
+        </view>
+    </view>
+
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入正文内容" maxlength="500" placeholder-style="color:#b3b3b3;font-size:14px;" style="height: 12rem" bindinput="handleContentInput" />
+            </view>
+        </view>
+    </view>
+
+    <view class="comment-images">
+        <block wx:for="{{images}}" wx:key="*this">
+            <view class="q-comment-wrap">
+                <image class="q-comment" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+                <view class="q-comment-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+            </view>
+        </block>
+    </view>
+
+    <view>
+    <button bindtap="addImage" 
+        wx:if="{{images.length < 3}}">添加图片
+    </button>
+    <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+    </view>
+</template>

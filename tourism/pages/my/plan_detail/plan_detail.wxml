@@ -1,15 +1,37 @@
 <!--pages/my/plan_detail/plan_detail.wxml-->
 <import src="../../../templates/userlist/userlist.wxml"/>
+<import src="../../../templates/comment_upload/comment_upload.wxml"/>
 
 <van-panel title="此次出行团队成员">
-<block wx:if='{{state==2}}'>
-<block wx:for="{{ userList }}" wx:for-item="user">
-  <template is="userlist1" data="{{user: user}}"/>
-</block>
-</block>
-<block wx:else>
- <block wx:for="{{ userList }}" wx:for-item="user">
-  <template is="userlist2" data="{{user: user}}"/>
-</block>
-</block>
+  <block wx:if="{{userList.length > 0}}">
+    <block wx:if='{{state==2}}'>
+      <block wx:for="{{ userList }}" wx:for-item="user">
+        <template is="userlist1" data="{{user: user}}"/>
+      </block>
+    </block>
+    <block wx:else>
+      <block wx:for="{{ userList }}" wx:for-item="user">
+        <template is="userlist2" data="{{user: user}}"/>
+      </block>
+    </block>
+  </block>
+  <block wx:else>
+    <block>
+      还没有成员加入，请查看“待审批的申请”
+    </block>
+  </block>
 </van-panel>
+
+<block wx:if='{{state==0}}'>
+  <van-panel title='创建公告'>
+    <template is="comment_upload" data="{{images: images}}" />
+  </van-panel>
+</block>
+<block wx:elif='{{state==2}}'>
+  <van-panel title='创建旅行评价'>
+    <template is="comment_upload" data="{{images: images}}"/>
+  </van-panel>
+</block>
+
+
+
