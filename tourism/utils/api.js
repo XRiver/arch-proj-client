@@ -129,6 +129,15 @@ const getPlanByPid = function(params) {
     })     
 }
 
+const getJoinedPlanByOpenId = function (params) {
+  const state = params.data.state ? params.data.state : '0123';
+  http.request({
+    url: `${baseUrl}/plan/joined/openid/${params.data.openid}?state=${state}`,
+    method: 'GET',
+    success: params.success
+  })
+}
+
 export {
   login,
   register,
@@ -143,5 +152,6 @@ export {
   processApply,
   switchPlanState,
   evaluateMember,
-  getPlanByPid
+  getPlanByPid,
+  getJoinedPlanByOpenId
 }

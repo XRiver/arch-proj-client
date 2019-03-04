@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+      "van-panel": "/miniprogram_npm/vant-weapp/panel/index",
+      "van-field": "/miniprogram_npm/vant-weapp/field/index",
+      "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
+      "van-collapse": "/miniprogram_npm/vant-weapp/collapse/index",
+      "demo-block": "/components/demo-block/index",
+      "van-collapse-item": "/miniprogram_npm/vant-weapp/collapse-item/index"
+    }
+}

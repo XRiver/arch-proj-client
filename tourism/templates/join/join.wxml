@@ -1,0 +1,42 @@
+<template name="tem-join">
+  <van-panel title="{{trip.aname}}" desc="创建人：{{trip.uname}}" status="{{trip.state_}}">
+    <view class="content">出行时间：{{trip.formatTime}}</view>
+    <view class="content">出行要求：{{trip.detail}}</view>
+  </van-panel>
+  <view class="content">公告:</view>
+  <block wx:for="{{ trip.announcementList}}" wx:for-item="announcement">
+    <block wx:if="{{ announcement.type==0 }}">
+      <template is="tem-announcement" data="{{announcement: announcement}}"/>
+    </block>
+  </block>
+
+  <view class="content">评价:</view>
+    <block wx:for="{{ trip.announcementList}}" wx:for-item="announcement">
+    <block wx:if="{{ announcement.type==1 }}">
+      <template is="tem-announcement" data="{{announcement: announcement}}"/>
+    </block>
+  </block>
+
+</template>
+
+<template name="tem-announcement">
+      <view class="wp-sep clear-both"></view>
+      <view class="day-content">
+        <block wx:if="{{ announcement.picUrls || announcement.content }}">
+          <view class="waypoint" bindtap="viewWaypoint" data-waypoint="{{ announcement.announcementId }}">
+            <block wx:for="{{ announcement.picUrlsArr }}" wx:for-item="pic">
+              <view class="photo-ctn">
+                <image style="width: 100%; height: 600rpx; background-color: #eeeeee;" class="cover" src="{{ pic  }}"></image>
+              </view>
+            </block>
+            <view wx:if="{{ announcement.content }}" class="text">{{ announcement.content }}</view>
+            <view class="wp-stats">
+              <view class="wp-time">
+                <image class="icon-time" src="../../../images/time.png"></image>{{ announcement.formatTime }}</view>
+            </view>
+
+          </view>
+          <view class="wp-sep"></view>
+        </block>
+      </view>
+</template>

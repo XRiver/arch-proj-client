@@ -1,5 +1,5 @@
 <template name="tem-trip">
-  <van-panel title="{{trip.aname}}" desc="{{trip.uname}}" status="状态" use-footer-slot >
+  <van-panel title="{{trip.aname}}" desc="创建人：{{trip.uname}}" status="{{trip.state_}}" use-footer-slot >
     <view class="content">出行时间：{{trip.formatTime}}</view>
     <view class="content">出行要求：{{trip.detail}}</view>
     <van-cell-group>

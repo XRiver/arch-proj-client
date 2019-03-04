@@ -36,6 +36,20 @@ Page({
             let date = new Date(parseInt(trip.traveltime))
             let format_time = util.formatTime(date)
             trip['formatTime'] = format_time
+
+            let state = trip.state
+            let state_ = '未出行'
+            if (state == "1") {
+              state_ = "正在进行"
+            }
+            else if (state == "2") {
+              state_ = "行程结束"
+            }
+            else if (state == "3") {
+              state_ = "过期作废"
+            }
+            trip['state_'] = state_
+            
           }
           console.log(res)
 

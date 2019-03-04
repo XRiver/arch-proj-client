@@ -1,0 +1,8 @@
+<!--pages/my/join/join.wxml-->
+<import src="../../../templates/join/join.wxml"/>
+
+<view>
+  <block wx:for="{{ trips }}" wx:for-item="trip">
+      <template is="tem-join" data="{{trip: trip}}"/>
+  </block>
+</view>

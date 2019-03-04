@@ -10,7 +10,8 @@
     "pages/place/place",
     "pages/my/info/info",
     "pages/my/applyprocess/applyprocess",
-    "pages/my/myplan/myplan"
+    "pages/my/myplan/myplan",
+    "pages/my/join/join"
   ],
   "window": {
     "backgroundTextStyle": "light",

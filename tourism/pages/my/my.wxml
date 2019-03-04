@@ -25,7 +25,7 @@
             <!--<view class="weui-cell__ft weui-cell__ft_in-access">{{infoCount}}</view>-->
           </navigator>
 
-          <navigator url="/pages/my/ques/ques" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <navigator url="/pages/my/join/join" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
             <view class="weui-cell__bd">我参加的出行计划</view>
           </navigator>
 
