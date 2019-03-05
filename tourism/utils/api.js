@@ -138,6 +138,24 @@ const getJoinedPlanByOpenId = function (params) {
   })
 }
 
+const createAnnouncement = function(params) {
+    http.request({
+        url:`${baseUrl}/plan/announcement`,
+        method:'POST',
+        data:params.data,
+        success:params.success
+    })
+}
+
+const createSummary = function(params) {
+    http.request({
+        url:`${baseUrl}/plan/summary`,
+        method:'POST',
+        data:params.data,
+        success:params.success
+    })
+}
+
 export {
   login,
   register,
@@ -153,5 +171,7 @@ export {
   switchPlanState,
   evaluateMember,
   getPlanByPid,
-  getJoinedPlanByOpenId
+  getJoinedPlanByOpenId,
+  createAnnouncement,
+  createSummary
 }

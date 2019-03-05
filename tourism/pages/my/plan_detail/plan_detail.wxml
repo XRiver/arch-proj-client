@@ -24,12 +24,12 @@
 
 <block wx:if='{{state==0}}'>
   <van-panel title='创建公告'>
-    <template is="comment_upload" data="{{images: images}}" />
+    <template is="comment_upload" data="{{images: images, selectOpen: true}}" />
   </van-panel>
 </block>
 <block wx:elif='{{state==2}}'>
   <van-panel title='创建旅行评价'>
-    <template is="comment_upload" data="{{images: images}}"/>
+    <template is="comment_upload" data="{{images: images, selectOpen: true}}"/>
   </van-panel>
 </block>
 

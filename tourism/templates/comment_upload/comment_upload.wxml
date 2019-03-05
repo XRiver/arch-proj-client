@@ -13,6 +13,13 @@
         </view>
     </view>
 
+    <view wx:if="{{selectOpen}}">
+        <radio-group bindchange="handleSelectOpen">
+            <radio value="{{1}}" checked />公开
+            <radio value="{{0}}" />仅对成员公开
+        </radio-group>
+    </view>
+
     <view class="comment-images">
         <block wx:for="{{images}}" wx:key="*this">
             <view class="q-comment-wrap">

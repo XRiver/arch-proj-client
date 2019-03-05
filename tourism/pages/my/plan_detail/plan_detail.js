@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    images:[]
+    images:[],
+    selectOpen:1
   },
 
   onChange(event) {
@@ -16,6 +17,11 @@ Page({
     const star = event.detail
     const pid = this.data.pid
     const fromid = wx.getStorageSync('openid')
+
+    this.setData({
+      openid:fromid
+    })
+
     api.evaluateMember({
       data:{
         pid,
@@ -75,15 +81,19 @@ Page({
   },
 
   handleTitleInput:function(e){
-    const value = e.detail.value
     this.setData({
-      title:value
+      title:e.detail.value
     })
   },
   handleContentInput:function(e){
-    const value = e.detail.value
     this.setData({
-      content:value
+      content:e.detail.value
+    })
+  },
+  handleSelectOpen:function(e) {
+    console.log('Selecting:'+e.detail.value)
+    this.setData({
+      selectOpen:e.detail.value
     })
   },
 
@@ -106,58 +116,69 @@ Page({
   submitForm: function(e) {
     const title = this.data.title
     const content = this.data.content
+    const that = this
 
     if (title && content) {
-      const arr = []
-
+      const retArr = []
       console.log('Title and content filled.')
-      
-      /*
 
-      for (let path of this.data.images) {
-        arr.push(wx.UploadFile({
-          //url: config.urls.question + '/image/upload',
-          filePath: path,
-          //name: 'qimg',
-        }))
+      const collectRet = function(retData) {
+        if(retData) {
+          retArr.push(JSON.parse(retData))
+        }
+        
+        if(retArr.length == that.data.images.length) {
+          var data = {
+            openid:that.data.openid,
+            pid:that.data.pid,
+            picUrls:retArr.map(item => item.data.url).join(','),
+            content:title+'=>'+content,
+          }
+          if(that.data.state==0) { // 公告
+            data.open = that.data.selectOpen
+            api.createAnnouncement({
+              data:data,
+              success:function(res) {
+                console.log(res)
+              }
+            })
+          } else { // 评价
+            api.createSummary({
+              data:data,
+              success:function(res) {
+                console.log(res)
+              }
+            })
+          }
+          wx.navigateBack()
+          wx.hideLoading()
+        } else {
+          console.log(retArr)
+        }
       }
 
+      for (let path of this.data.images) {
+        wx.uploadFile({
+          url:'https://sm.ms/api/upload',
+          name:'smfile',
+          filePath: path,
+          //success:function(res){},
+          complete: function(res) {
+            console.log(res.data)
+            collectRet(res.data)
+          }
+        })
+      } 
+      
+      
       wx.showLoading({
         title: '正在创建...',
         mask: true
       })
-
-      // 开始并行上传图片
-      Promise.all(arr).then(res => {
-        // 上传成功，获取这些图片在服务器上的地址，组成一个数组
-        return res.map(item => JSON.parse(item.data).url)
-      }).catch(err => {
-        console.log(">>>> upload images error:", err)
-      }).then(urls => {
-        // 调用保存问题的后端接口
-        return createQuestion({
-          title: title,
-          content: content,
-          images: urls
-        })
-      }).then(res => {
-        // 保存问题成功，返回上一页（通常是一个问题列表页）
-        const pages = getCurrentPages();
-        const currPage = pages[pages.length - 1];
-        const prevPage = pages[pages.length - 2];
-
-        // 将新创建的问题，添加到前一页（问题列表页）第一行
-        prevPage.data.questions.unshift(res)
-        $digest(prevPage)
-
-        wx.navigateBack()
-      }).catch(err => {
-        console.log(">>>> create question error:", err)
-      }).then(() => {
-        wx.hideLoading()
-      })
-
-      */
+      
+      if(that.data.images.length == 0) {
+        collectRet(null)
+      }
     }
   },
 
