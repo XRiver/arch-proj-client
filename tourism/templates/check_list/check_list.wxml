@@ -1,0 +1,17 @@
+<template name="user_check_list">
+
+    <view class="comment-images">
+        <block wx:for="{{users}}" wx:key="*this">
+            <view class="q-comment-wrap">
+                <image class="q-comment" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+                <view class="q-comment-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+            </view>
+        </block>
+    </view>
+
+    <view>
+        <button bindtap="confirmCheckList" 
+            wx:if="{{true}}">确认
+        </button>
+    </view>
+</template>

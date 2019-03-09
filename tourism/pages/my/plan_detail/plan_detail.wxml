@@ -1,6 +1,7 @@
 <!--pages/my/plan_detail/plan_detail.wxml-->
 <import src="../../../templates/userlist/userlist.wxml"/>
 <import src="../../../templates/comment_upload/comment_upload.wxml"/>
+<import src="../../../templates/check_list/check_list.wxml"/>
 
 <van-panel title="此次出行团队成员">
   <block wx:if="{{userList.length > 0}}">
@@ -27,9 +28,14 @@
     <template is="comment_upload" data="{{images: images, selectOpen: true}}" />
   </van-panel>
 </block>
+<block wx:elif='{{state==1 && (!memberListChecked)}}'>
+  <van-panel title='确认参与者名单'>
+    <template is="user_check_list" data="{{users: []}}"/>
+  </van-panel>
+</block>
 <block wx:elif='{{state==2}}'>
   <van-panel title='创建旅行评价'>
-    <template is="comment_upload" data="{{images: images, selectOpen: true}}"/>
+    <template is="comment_upload" data="{{images: images, selectOpen: false}}"/>
   </van-panel>
 </block>
 

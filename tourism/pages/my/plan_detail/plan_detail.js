@@ -9,7 +9,8 @@ Page({
    */
   data: {
     images:[],
-    selectOpen:1
+    selectOpen:1,
+    memberListChecked:true
   },
 
   onChange(event) {
