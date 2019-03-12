@@ -1,17 +1,20 @@
 <template name="user_check_list">
 
-    <view class="comment-images">
-        <block wx:for="{{users}}" wx:key="*this">
-            <view class="q-comment-wrap">
-                <image class="q-comment" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
-                <view class="q-comment-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+    <view class="confirmation_user_list">
+        <block wx:for="{{users}}" wx:for-index="idx" wx:for-item="user">
+            <view class="confirmation_user">
+                <view class="username">
+                    {{user.uname}}
+                </view>
+                <radio-group bindchange="onCheckRadioChange">
+                    <radio value="{{'T'+user.openid}}">到位</radio>
+                    <radio value="{{'F'+user.openid}}" checked="{{true}}">未到</radio>
+                </radio-group>
             </view>
         </block>
     </view>
 
     <view>
-        <button bindtap="confirmCheckList" 
-            wx:if="{{true}}">确认
-        </button>
+        <button bindtap="confirmCheckList">确认</button>
     </view>
 </template>

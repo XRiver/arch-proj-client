@@ -19,6 +19,12 @@
             <radio value="{{0}}" />仅对成员公开
         </radio-group>
     </view>
+    <view wx:else>
+        <view class='grade'>
+            <text>评分:</text>
+            <van-rate custom-class="van-rate" icon="like" void-icon="like-o" color="#E31D1A" size="{{ 25 }}" bind:change="onSummaryGradeChange" />
+        </view>
+    </view>
 
     <view class="comment-images">
         <block wx:for="{{images}}" wx:key="*this">

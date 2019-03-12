@@ -158,7 +158,7 @@ const createSummary = function(params) {
 
 const memberListChecked = function (params) {
     http.request({
-      url: `${baseUrl}/plan/confirmed/${params.pid}`,
+      url: `${baseUrl}/plan/confirmed/${params.data.pid}`,
       method: 'GET',
       success: params.success
     })
@@ -166,7 +166,7 @@ const memberListChecked = function (params) {
 
 const checkMemberList = function(params) {
     http.request({
-        url:`${baseUrl}/plan/confirmed/${params.pid}`,
+        url:`${baseUrl}/plan/confirmed/${params.data.pid}`,
         method:'POST',
         data:params.data,
         success:params.success

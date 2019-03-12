@@ -9,8 +9,10 @@ Page({
    */
   data: {
     images:[],
+    confirmed_users:[],
     selectOpen:1,
-    memberListChecked:true
+    memberListChecked:true,
+    grade:5
   },
 
   onChange(event) {
@@ -49,20 +51,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const that = this
     const pid = options.pid
     this.setData({
-      pid:pid
+      pid:pid,
+      openid:wx.getStorageSync('openid')
     })
     api.getPlanByPid({
       data:{
         pid:pid
       },
       success:(res)=>{
+        console.log("查询本plan")
         console.log(res)
-        this.setData({
+        that.setData({
           state:res.state,
           userList:res.userList
         })
+        if(res.state==1) {
+          api.memberListChecked({
+            data:{
+              pid:pid
+            },
+            success:function(res) {
+              that.setData({
+                memberListChecked:res.code==1
+              })
+              console.log("检查plan是否已经进行了参与者确认：")
+              console.log(res)
+            }
+          })
+        }
       }
     })
   },
@@ -81,6 +100,12 @@ Page({
     })
   },
 
+  onSummaryGradeChange:function(event) {
+    const star = event.detail
+    this.setData({
+      grade:star
+    })
+  },
   handleTitleInput:function(e){
     this.setData({
       title:e.detail.value
@@ -144,6 +169,7 @@ Page({
               }
             })
           } else { // 评价
+            data.star = that.data.grade
             api.createSummary({
               data:data,
               success:function(res) {
@@ -181,6 +207,47 @@ Page({
         collectRet(null)
       }
     }
+  },
+
+  confirmCheckList:function(event) {
+    const that = this
+    var data = {
+      pid:that.data.pid,
+      openid:that.data.openid,
+      members:that.data.confirmed_users
+    }
+
+    api.checkMemberList({
+      data:data,
+      success:function(res) {
+        // 不处理成功失败
+        console.log(res)
+      }
+    })
+    wx.navigateBack()
+  },
+
+  onCheckRadioChange:function(event) {
+    console.log(event)
+    const message = event.detail.value
+    const openid = message.substring(1)
+    const that = this
+    switch(message.charAt(0)) {
+      case 'T':
+        that.data.confirmed_users.push(openid)
+        break
+      case 'F':
+        that.data.confirmed_users = 
+          that.data.confirmed_users.filter(
+            function(i){
+              if(i != openid) {
+                return i
+              }
+            }
+          )
+    }
+
+    console.log(that.data.confirmed_users)
   },
 
   /**

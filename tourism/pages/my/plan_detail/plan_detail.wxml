@@ -28,10 +28,16 @@
     <template is="comment_upload" data="{{images: images, selectOpen: true}}" />
   </van-panel>
 </block>
-<block wx:elif='{{state==1 && (!memberListChecked)}}'>
-  <van-panel title='确认参与者名单'>
-    <template is="user_check_list" data="{{users: []}}"/>
-  </van-panel>
+<block wx:elif='{{state==1}}'>
+  <block wx:if='{{memberListChecked}}'>
+    <van-panel title='已经确认过参与者名单'>
+    </van-panel>
+  </block>
+  <block wx:else>
+    <van-panel title='确认参与者名单'>
+      <template is="user_check_list" data="{{users: userList}}"/>
+    </van-panel>
+  </block>
 </block>
 <block wx:elif='{{state==2}}'>
   <van-panel title='创建旅行评价'>
