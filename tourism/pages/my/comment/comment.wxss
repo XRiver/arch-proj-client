@@ -1,0 +1,5 @@
+/* pages/my/comment/comment.wxss */
+.grade{
+  display: flex;
+  padding:10rpx;
+}

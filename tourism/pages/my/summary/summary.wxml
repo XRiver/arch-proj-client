@@ -1,0 +1,8 @@
+<!--pages/summary/summary.wxml-->
+<import src="../../../templates/summary/summary.wxml"/>
+
+<view>
+  <block wx:for="{{ trips }}" wx:for-item="trip">
+      <template is="tem-comment" data="{{trip: trip}}"/>
+  </block>
+</view>

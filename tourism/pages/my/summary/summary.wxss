@@ -1,0 +1,3 @@
+/* pages/summary/summary.wxss */
+@import "../../../templates/summary/summary.wxss";
+@import "../../../templates/userlist/userlist.wxss";

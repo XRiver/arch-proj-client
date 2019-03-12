@@ -34,6 +34,9 @@
             <view class="weui-cell__bd">待审批的申请</view>
           </navigator>
 
+          <navigator url="/pages/my/summary/summary" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">评价出行计划</view>
+          </navigator>
 
         </view>
       </view>

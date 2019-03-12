@@ -1,3 +1,8 @@
+.button-contain{
+  display: flex;
+  justify-content:flex-end;
+  padding: 20rpx;
+}
 .content {
   padding: 20rpx;
   font-size: 16px;

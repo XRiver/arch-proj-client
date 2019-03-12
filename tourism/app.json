@@ -11,7 +11,9 @@
     "pages/my/info/info",
     "pages/my/applyprocess/applyprocess",
     "pages/my/myplan/myplan",
-    "pages/my/join/join"
+    "pages/my/join/join",
+    "pages/my/comment/comment",
+    "pages/my/summary/summary"
   ],
   "window": {
     "backgroundTextStyle": "light",
