@@ -156,6 +156,23 @@ const createSummary = function(params) {
     })
 }
 
+const memberListChecked = function (params) {
+    http.request({
+      url: `${baseUrl}/plan/confirmed/${params.pid}`,
+      method: 'GET',
+      success: params.success
+    })
+}
+
+const checkMemberList = function(params) {
+    http.request({
+        url:`${baseUrl}/plan/confirmed/${params.pid}`,
+        method:'POST',
+        data:params.data,
+        success:params.success
+    })
+}
+
 export {
   login,
   register,
@@ -173,5 +190,7 @@ export {
   getPlanByPid,
   getJoinedPlanByOpenId,
   createAnnouncement,
-  createSummary
+  createSummary,
+  memberListChecked,
+  checkMemberList
 }

@@ -133,7 +133,7 @@ Page({
             openid:that.data.openid,
             pid:that.data.pid,
             picUrls:retArr.map(item => item.data.url).join(','),
-            content:title+'=>'+content,
+            content:'《'+title+'》  '+content,
           }
           if(that.data.state==0) { // 公告
             data.open = that.data.selectOpen
