@@ -23,7 +23,7 @@
     </view>
     <view class='grade'>
     <text>景点评分:</text>
-    <van-rate custom-class="van-rate" icon="like" void-icon="like-o" color="#E31D1A" data-uid="{{summary.openid}}" size="{{ 25 }}" value="{{ summary.star }}" disabled/>
+    <van-rate custom-class="van-rate" icon="like" void-icon="like-o" color="#E31D1A" data-uid="{{summary.openid}}" size="{{ 25 }}" value="{{ summary.star }}" disabled disabled-color="#E31D1A"/>
     </view>
     </van-cell-group>
 
