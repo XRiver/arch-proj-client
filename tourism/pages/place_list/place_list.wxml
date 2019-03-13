@@ -1,7 +1,7 @@
 <!--pages/place_list/place_list.wxml-->
 <import src="../../templates/place/place.wxml"/>
 
-<van-search
+<!-- <van-search
   value="{{ value }}"
   show-action
   placeholder="请输入搜索关键词"
@@ -9,7 +9,7 @@
   bind:search="onSearch"
   bind:cancel="onCancel"
   bind:clear="onClear"
-/>
+/> -->
 <scroll-view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800">
   <block wx:for="{{ places }}" wx:for-item="place">
     <template is="m-trip" data="{{place: place}}"/>

@@ -54,13 +54,6 @@ Page({
     })
   },
 
-  comment: function (event) {
-    const pid = event.target.dataset.pid
-    // console.log(pid)
-    wx.navigateTo({
-      url: `../comment/comment?pid=${pid}`,
-    });
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -45,7 +45,7 @@ Page({
   comment: function (event) {
     const pid = event.target.dataset.pid
     // console.log(pid)
-    wx.navigateTo({
+    wx.redirectTo({
       url: `../comment/comment?pid=${pid}`,
     });
   },

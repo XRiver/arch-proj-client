@@ -87,10 +87,10 @@ Page({
             }
           })
 
-          // wx.navigateTo({
-          //   url: `../my`,
-          // });
-          wx.navigateBack()
+          wx.redirectTo({
+            url: `../summary/summary`,
+          });
+          // wx.navigateBack()
           wx.hideLoading()
         } else {
           console.log(retArr)
