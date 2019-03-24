@@ -5,7 +5,7 @@
     <view class="head">
       <view>
         <navigator url="/pages/my/info/info">
-          <image src="{{userInfo.userimg}}"></image>
+          <image src="{{pictureurl}}"></image>
         </navigator>
       </view>
       <view>

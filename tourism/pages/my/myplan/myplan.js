@@ -1,5 +1,5 @@
 const api = require('../../../utils/api')
-
+const util = require('../../../utils/util.js')
 const app = getApp()
 // pages/my/myplan/myplan.js
 // 功能：根据自己创建的出行计划，获取所有未审批的计划申请者
@@ -48,6 +48,11 @@ Page({
       },
       success:function(res) {
         console.log(res)
+        for (let trip of res) {
+          let date = new Date(parseInt(trip.traveltime))
+          let format_time = util.formatTime(date)
+          trip['formatTime'] = format_time
+        }
         that.setData({
           planlist:res //根据API文档，这样应该可以设好每一个Plan
         })

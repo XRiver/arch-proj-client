@@ -1,13 +1,22 @@
 <!--pages/trip_add/trip_add.wxml-->
-
 <demo-block title="请选择出行日期（年/月/日/时/分）">
+  <van-datetime-picker
+    type="datetime"
+    data-type="datetime"
+    loading="{{ loading }}"
+    value="{{ currentDate }}"
+    min-date="{{ minDate }}"
+    bind:input="onChange"
+  />
+</demo-block>
+<!-- <demo-block title="请选择出行日期（年/月/日/时/分）">
   <van-datetime-picker
     type="datetime"
     value="{{ currentDate }}"
     min-date="{{ minDate }}"
     bind:change="onChange"
   />
-</demo-block>
+</demo-block> -->
 
 <van-cell-group class='message'>
     <van-field

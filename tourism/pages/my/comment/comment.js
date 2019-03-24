@@ -77,7 +77,7 @@ Page({
             pid: that.data.pid,
             picUrls: retArr.map(item => item.data.url).join(','),
             star: that.data.star,
-            content: title+"=>"+content,
+            content: "《"+title+"》"+content,
           }
           // 评价
           api.createSummary({

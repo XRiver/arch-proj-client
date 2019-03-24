@@ -17,7 +17,7 @@
                   />
                   <van-cell
                     title="出行日期"
-                    value="{{plan.traveltime}}"
+                    value="{{plan.formatTime}}"
                     size="large"
                   />
                 </van-cell-group>

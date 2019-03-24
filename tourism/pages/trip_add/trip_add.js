@@ -2,7 +2,7 @@
 const app = getApp();
 const api = require('../../utils/api.js')
 const util = require('../../utils/util.js')
-
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
 Page({
 
   /**
@@ -12,8 +12,7 @@ Page({
     minHour: 10,
     maxHour: 20,
     minDate: new Date(2019, 0, 1).getTime(),
-    currentDate: new Date(2019, 0, 1).getTime(),
-    time: '00:00',
+    currentDate: new Date().getTime()
   },
   /**
    * 生命周期函数--监听页面加载
@@ -25,16 +24,57 @@ Page({
     })
   },
 
-  onChange(event){
-    let timeStamp = event.detail.__viewData__.innerValue
-    console.log(timeStamp)
+  onChange2(event){
+    console.log(event.detail)
+    let index = event.detail.__data__.pickerValue[0]
+    let date = event.detail.__data__.columns[0][index]
+    console.log(date)
+    // let arr = []
+    // for(let i =0;i<5;i++){
+    //   let index = event.detail.__data__.pickerValue[i]
+    //   let date = event.detail.__data__.columns[i][index]
+    //   arr.push(date)
+    // }
+    // console.log(arr)
+    // let timeStamp = event.detail.__viewData__.innerValue
+    // console.log(timeStamp)
     // const date = new Date(timeStamp/1000)
     // const formateDate = util.formatTime(date)
     this.setData({
       timeStamp: timeStamp
     })
   },
+  onChange(event) {
+    console.log(event.detail)
+    let timeStamp = event.detail
+    this.setData({
+      timeStamp: timeStamp
+    })
+    const { detail, currentTarget } = event;
+    const result = this.getResult(detail, currentTarget.dataset.type);
+    wx.showToast({
+      title: result,
+      icon: 'none',
+      duration: 1000
+    })
+    // Toast(result);
+  },
 
+  getResult(time, type) {
+    const date = new Date(time);
+    switch (type) {
+      case 'datetime':
+        return date.toLocaleString();
+      case 'date':
+        return date.toLocaleDateString();
+      case 'year-month':
+        return `${date.getFullYear()}/${date.getMonth() + 1}`;
+      case 'time':
+        return time;
+      default:
+        return '';
+    }
+  },
   onInput(e){
     console.log(e.detail)
     this.setData({
