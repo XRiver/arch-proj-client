@@ -14,9 +14,9 @@
       <view class="bd">
          <image class="smalltitle" src="/images/index/slogan.png"></image>
 
-        <!-- <view class="confirm-btn" bindtap='goToPlaceList' wx:if="{{regFlag==true}}">
-          <text>进入首页</text>
-        </view> -->
+        <view wx:if="{{unlockHint}}">
+          <text>你被封啦！解封时间：{{unlockHint}}</text>
+        </view>
 
         <button class="confirm-btn"  open-type="getUserInfo" bindgetuserinfo="login">
             授权登录

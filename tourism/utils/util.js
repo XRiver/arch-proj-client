@@ -16,7 +16,8 @@ const backUInfo2wxUInfo = function(backUInfo) {
         city:backUInfo.city,
         gender:sex,
         nickname:backUInfo.nickname,
-        language:backUInfo.language
+        language:backUInfo.language,
+        unlockTime:backUInfo.unlockTime
     }
 }
 
@@ -38,7 +39,8 @@ const wxUInfo2backUInfo = function(wxUInfo) {
         country:wxUInfo.country,
         province:wxUInfo.province,
         city:wxUInfo.city,
-        language:wxUInfo.language
+        language:wxUInfo.language,
+        unlockTime:wxUInfo.unlockTime
     }
 }
 

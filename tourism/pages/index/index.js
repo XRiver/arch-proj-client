@@ -98,14 +98,34 @@ Page({
       success: function(res) {
         console.log(res)
         if (res.code == 0) { // 登录成功，可以读取userInfo
-          app.globalData.userInfo = util.backUInfo2wxUInfo(res.data)
-          that.goToPlaceList()
+          const uinfo = util.backUInfo2wxUInfo(res.data)
+          app.globalData.userInfo = uinfo
+          if(that.isUnlocked(uinfo.unlockTime)) {
+            that.goToPlaceList()
+          } else {
+            that.setData({
+              "unlockHint":new Date(uinfo.unlockTime).toLocaleDateString()
+            })
+          }
         } else {
           // 本openid登陆失败
           // 也就是之前存储过openid，却没有注册过，那么就走正常路线
         }
       }
     })
+  },
+
+  isUnlocked: function(unlockTime) {
+    if(unlockTime) {
+      const today = new Date().getTime()
+      if(today > unlockTime) {
+        return true
+      } else {
+        return false
+      }
+    } else {
+      return true
+    }
   },
   
   login: function(e) {
