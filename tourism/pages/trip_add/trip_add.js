@@ -9,9 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    minHour: 10,
-    maxHour: 20,
-    minDate: new Date(2019, 0, 1).getTime(),
+    minDate: new Date().getTime(),
     currentDate: new Date().getTime()
   },
   /**

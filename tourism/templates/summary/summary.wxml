@@ -33,7 +33,7 @@
       <view class="waypoint" bindtap="viewWaypoint" data-waypoint="{{ summary.summaryId }}">
         <block wx:for="{{ summary.picUrlsArr }}" wx:for-item="pic">
           <view class="photo-ctn">
-            <image style="width: 100%; height: 600rpx; background-color: #eeeeee;" class="cover" src="{{ pic  }}"></image>
+            <image style="width: 100%; height: 700rpx; background-color: #eeeeee;" class="cover" src="{{ pic  }}"></image>
           </view>
         </block>
         <view wx:if="{{ summary.content }}" class="text">{{ summary.content }}</view>

@@ -4,9 +4,7 @@
   <view class="page__hd">
     <view class="head">
       <view>
-        <navigator url="/pages/my/info/info">
-          <image src="{{pictureurl}}"></image>
-        </navigator>
+        <image src="{{avatarUrl}}"></image>
       </view>
       <view>
         <text>{{userInfo.username}}</text>
